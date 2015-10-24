@@ -23,8 +23,10 @@ def poly(n,zi,dz,filename):
         y = np.append(y,intg.odeint(LEeqn,y[nz-1],zs2,args=tuple([n])),axis=0)
         sys.stdout.write("\rz={0},th={1}".format(zs[-1],y[-1,0]))
         sys.stdout.flush()
+    sys.stdout.write("\n")
 
-    nover = np.size(np.where(y[:,0]<0.))
+    nover = np.size(np.where(y[:,0]<0.)-1
+    print nover
     zs = zs[:-nover]
     y = y[:-nover]
 
