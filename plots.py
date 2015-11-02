@@ -39,19 +39,22 @@ Pc=K*pc**(1.+1./n)
 print "Pc = ",Pc
 #Tc = 
 
+sn = list(str(n))
+sn[1]='p'
+sn="".join(sn)
 r = z/A
 p = pc*th**n
 P = K*p**(1.+1./n)
-plt.plot(r/R,p)
-plt.xlabel(r"r/R")
+plt.plot(r,p)
+plt.xlabel(r"$r [\mathrm{cm}]$")
 plt.ylabel(r"$\rho$ [g cm$^{-3}$]")
-plt.hlines(pc*m3ozdthdz[-1])
-plt.savefig('density'+str(n)+'.pdf')
+plt.hlines(pc*m3ozdthdz[-1],0,R)
+plt.savefig('density'+sn+'.pdf')
 plt.clf()
-plt.plot(r/R,P)
-plt.xlabel(r"r/R")
+plt.plot(r,P)
+plt.xlabel(r"$r [\mathrm{cm}]$")
 plt.ylabel(r"$P$ [dyne cm$^{-2}$]")
-plt.savefig('pressure'+str(n)+'.pdf')
+plt.savefig('pressure'+sn+'.pdf')
 plt.clf()
 
 #m = 4.*np.pi*p*r**2.
@@ -59,7 +62,7 @@ plt.clf()
 #plt.plot(r/R,menc/Msun)
 #plt.xlabel(r"r/R")
 #plt.ylabel(r"$m$ [M$_\odot$]")
-#plt.savefig('mass'+str(n)+'.pdf')
+#plt.savefig('mass'+sn+'.pdf')
 #plt.clf()
 
 a = 7.56591e-15
