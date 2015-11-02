@@ -42,19 +42,31 @@ print "Pc = ",Pc
 r = z/A
 p = pc*th**n
 P = K*p**(1.+1./n)
-plt.plot(r,p)
-plt.savefig('density.pdf')
+plt.plot(r/R,p)
+plt.xlabel(r"r/R")
+plt.ylabel(r"$\rho$ [g cm$^{-3}$]")
+plt.savefig('density'+str(n)+'.pdf')
 plt.clf()
-plt.plot(r,P)
-plt.savefig('pressure.pdf')
+plt.plot(r/R,P)
+plt.xlabel(r"r/R")
+plt.ylabel(r"$P$ [dyne cm$^{-2}$]")
+plt.savefig('pressure'+str(n)+'.pdf')
 plt.clf()
 
-m = (4./3.)*np.pi*p*r**3.
-plt.plot(r,m)
-plt.savefig('mass.pdf')
-plt.clf()
+#m = 4.*np.pi*p*r**2.
+#menc = np.cumsum(m)
+#plt.plot(r/R,menc/Msun)
+#plt.xlabel(r"r/R")
+#plt.ylabel(r"$m$ [M$_\odot$]")
+#plt.savefig('mass'+str(n)+'.pdf')
+#plt.clf()
 
-U = -G*4.*np.pi* np.trapz((m*r*p),r)
-print U
-print -G*(16./15.)*np.pi**2*(pc*m3ozdthdz[-1])**2*R**5
+a = 7.56591e-15
+B=0.5
+Tc=(((1.-B)*3.*Pc)/a)**0.25
+print "Tc = ",Tc
 
+#U = -G*4.*np.pi* np.trapz((menc*p*r),r)
+#print "integrated Ugrav = ", U
+print "Eg ave density = ",-G*(16./15.)*np.pi**2*(pc*m3ozdthdz[-1])**2*R**5
+print "Eg (19.44) = ",(-3./(5.-n))*(G*M*M)/R

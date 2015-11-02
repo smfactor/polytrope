@@ -6,7 +6,7 @@ import sys
 
 def LEeqn(n):
     def LEeq(th,z):
-        return np.array([th[1],(-2./z)*th[1]-(th[0]**n)])
+        return np.array([th[1],(-2./z)*th[1]-(np.abs(th[0])**n)])
     return LEeq
 
 def thPN(th,z):
